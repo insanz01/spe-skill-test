@@ -1,20 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
 
 type SpeSkillTest interface {
-	NarcissticNumber(string) bool
-	ParityOutlier(arr []int) int
+	NarcissticNumber(int) bool
+	ParityOutlier([]int) int
 	NeedleInAHaystack([]string, string) int
 	TheBlueOceanReverse([]int, []int) []int
 }
 
 type speSkillTest struct{}
 
-func NewSpeSkillTest() *speSkillTest {
+func NewSpeSkillTest() SpeSkillTest {
 	return &speSkillTest{}
 }
 
@@ -27,14 +28,16 @@ func powNumber(num1, num2 int) int {
 	return result
 }
 
-func (s *speSkillTest) NarcissticNumber(strNumber string) bool {
+func (s *speSkillTest) NarcissticNumber(number int) bool {
+	strNumber := strconv.Itoa(number)
+
 	eachNumbers := strings.Split(strNumber, "")
 
 	lenNumeric := len(eachNumbers)
 	total := 0
 
-	for _, number := range eachNumbers {
-		parseNumber, err := strconv.Atoi(number)
+	for _, numb := range eachNumbers {
+		parseNumber, err := strconv.Atoi(numb)
 		if err != nil {
 			return false
 		}
@@ -42,9 +45,7 @@ func (s *speSkillTest) NarcissticNumber(strNumber string) bool {
 		total += powNumber(parseNumber, lenNumeric)
 	}
 
-	strTotal := strconv.Itoa(total)
-
-	return strTotal == strNumber
+	return total == number
 }
 
 func (s *speSkillTest) ParityOutlier(arr []int) int {
@@ -100,4 +101,12 @@ func (s *speSkillTest) TheBlueOceanReverse(arr1 []int, arr2 []int) []int {
 	}
 
 	return result
+}
+
+func main() {
+	app := NewSpeSkillTest()
+
+	number := 153
+	narsissticResult := app.NarcissticNumber(number)
+	fmt.Printf("Apakah %d merupakan narsistik ? %v", number, narsissticResult)
 }

@@ -7,27 +7,33 @@ import (
 func TestNarsissticNumber(t *testing.T) {
 	testScenario := []struct {
 		Name     string
-		Number   string
+		Number   int
 		Expected bool
 		KindTest bool // negative case -> false, positive case -> true
 	}{
 		{
 			Name:     "case 1",
-			Number:   "153",
+			Number:   153,
 			Expected: true,
 			KindTest: true,
 		},
 		{
 			Name:     "case 2",
-			Number:   "111",
+			Number:   111,
 			Expected: false,
 			KindTest: true,
 		},
 		{
 			Name:     "case 3",
-			Number:   "121",
+			Number:   121,
 			Expected: true,
 			KindTest: false,
+		},
+		{
+			Name:     "case 4",
+			Number:   1,
+			Expected: true,
+			KindTest: true,
 		},
 	}
 
@@ -47,7 +53,7 @@ func TestNarsissticNumber(t *testing.T) {
 }
 
 func TestFindOutlier(t *testing.T) {
-	testScenario2 := []struct {
+	testScenario := []struct {
 		Name     string
 		Arr      []int
 		Result   int
@@ -76,7 +82,7 @@ func TestFindOutlier(t *testing.T) {
 
 	app := NewSpeSkillTest()
 
-	for _, tt := range testScenario2 {
+	for _, tt := range testScenario {
 		t.Run(tt.Name, func(t *testing.T) {
 			got := app.ParityOutlier(tt.Arr)
 
@@ -90,7 +96,7 @@ func TestFindOutlier(t *testing.T) {
 }
 
 func TestNeedleInHaystackNumber(t *testing.T) {
-	testScenario2 := []struct {
+	testScenario := []struct {
 		Name     string
 		Haystack []string
 		Search   string
@@ -129,7 +135,7 @@ func TestNeedleInHaystackNumber(t *testing.T) {
 
 	app := NewSpeSkillTest()
 
-	for _, tt := range testScenario2 {
+	for _, tt := range testScenario {
 		t.Run(tt.Name, func(t *testing.T) {
 			got := app.NeedleInAHaystack(tt.Haystack, tt.Search)
 
@@ -143,7 +149,7 @@ func TestNeedleInHaystackNumber(t *testing.T) {
 }
 
 func TestBlueOceanReverse(t *testing.T) {
-	testScenario2 := []struct {
+	testScenario := []struct {
 		Name     string
 		Arr1     []int
 		Arr2     []int
@@ -171,25 +177,38 @@ func TestBlueOceanReverse(t *testing.T) {
 			Expected: []int{1, 5, 5, 5, 5, 3},
 			KindTest: true,
 		},
+		{
+			Name:     "case 4",
+			Arr1:     []int{1, 5, 5, 5, 5, 3},
+			Arr2:     []int{2},
+			Expected: []int{1, 5, 5, 5, 3},
+			KindTest: false,
+		},
 	}
 
 	app := NewSpeSkillTest()
 
-	for _, tt := range testScenario2 {
+	for _, tt := range testScenario {
 		t.Run(tt.Name, func(t *testing.T) {
+			isValidLength := true
+
 			got := app.TheBlueOceanReverse(tt.Arr1, tt.Arr2)
 
 			if len(got) != len(tt.Expected) {
-				if tt.KindTest == false {
+				if tt.KindTest {
 					t.Errorf("length result is not same")
 					return
 				}
+
+				isValidLength = false
 			}
 
-			for i, g := range got {
-				if g != tt.Expected[i] {
-					if tt.KindTest != true {
-						t.Errorf("Expected=%d, but Got=%d", tt.Expected[i], g)
+			if isValidLength {
+				for i, g := range got {
+					if g != tt.Expected[i] {
+						if tt.KindTest != true {
+							t.Errorf("Expected=%d, but Got=%d", tt.Expected[i], g)
+						}
 					}
 				}
 			}

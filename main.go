@@ -47,8 +47,28 @@ func (s *speSkillTest) NarcissticNumber(strNumber string) bool {
 	return strTotal == strNumber
 }
 
-func (s *speSkillTest) ParityOutlier() {
+func (s *speSkillTest) ParityOutlier(arr []int) int {
+	oddCount := 0
+	evenCount := 0
+	var oddNum, evenNum int
 
+	for _, num := range arr {
+		if num%2 == 0 {
+			evenCount++
+			evenNum = num
+		} else {
+			oddCount++
+			oddNum = num
+		}
+
+		if evenCount > 1 && oddCount == 1 {
+			return oddNum
+		} else if oddCount > 1 && evenCount == 1 {
+			return evenNum
+		}
+	}
+
+	return 0
 }
 
 func (s *speSkillTest) NeedleInAHaystack(haystack []string, needle string) int {

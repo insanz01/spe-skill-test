@@ -46,6 +46,49 @@ func TestNarsissticNumber(t *testing.T) {
 	}
 }
 
+func TestFindOutlier(t *testing.T) {
+	testScenario2 := []struct {
+		Name     string
+		Arr      []int
+		Result   int
+		Expected int
+		KindTest bool // negative case -> false, positive case -> true
+	}{
+		{
+			Name:     "case 1",
+			Arr:      []int{2, 4, 0, 100, 4, 11, 2602, 36},
+			Expected: 11,
+			KindTest: true,
+		},
+		{
+			Name:     "case 2",
+			Arr:      []int{160, 3, 1719, 19, 11, 13, -21},
+			Expected: 160,
+			KindTest: true,
+		},
+		{
+			Name:     "case 3",
+			Arr:      []int{11, 13, 15, 19, 9, 13, -21},
+			Expected: 0,
+			KindTest: true,
+		},
+	}
+
+	app := NewSpeSkillTest()
+
+	for _, tt := range testScenario2 {
+		t.Run(tt.Name, func(t *testing.T) {
+			got := app.ParityOutlier(tt.Arr)
+
+			if got != tt.Expected {
+				if tt.KindTest {
+					t.Errorf("Expected=%v, but Got=%v", tt.Expected, got)
+				}
+			}
+		})
+	}
+}
+
 func TestNeedleInHaystackNumber(t *testing.T) {
 	testScenario2 := []struct {
 		Name     string

@@ -9,7 +9,7 @@ type SpeSkillTest interface {
 	NarcissticNumber(string) bool
 	ParityOutlier()
 	NeedleInAHaystack([]string, string) int
-	TheBlueOceanReverse()
+	TheBlueOceanReverse([]int, []int) []int
 }
 
 type speSkillTest struct{}
@@ -53,14 +53,31 @@ func (s *speSkillTest) ParityOutlier() {
 
 func (s *speSkillTest) NeedleInAHaystack(haystack []string, needle string) int {
 	for i, value := range haystack {
-		if strings.ToUpper(value) == strings.ToUpper(needle) {
+		if strings.EqualFold(value, needle) {
 			return i
 		}
+		// if strings.ToUpper(value) == strings.ToUpper(needle) {
+		// 	return i
+		// }
 	}
 
 	return -1
 }
 
-func (s *speSkillTest) TheBlueOceanReverse() {
+func (s *speSkillTest) TheBlueOceanReverse(arr1 []int, arr2 []int) []int {
+	arr2Map := make(map[int]bool)
 
+	for _, val := range arr2 {
+		arr2Map[val] = true
+	}
+
+	var result []int
+
+	for _, val := range arr1 {
+		if !arr2Map[val] {
+			result = append(result, val)
+		}
+	}
+
+	return result
 }

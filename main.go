@@ -7,7 +7,7 @@ import (
 
 type SpeSkillTest interface {
 	NarcissticNumber(string) bool
-	ParityOutlier()
+	ParityOutlier(arr []int) int
 	NeedleInAHaystack([]string, string) int
 	TheBlueOceanReverse([]int, []int) []int
 }

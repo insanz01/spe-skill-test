@@ -12,25 +12,25 @@ func TestNarsissticNumber(t *testing.T) {
 		KindTest bool // negative case -> false, positive case -> true
 	}{
 		{
-			Name:     "case 1",
+			Name:     "case 1 narsisstic - positive",
 			Number:   153,
 			Expected: true,
 			KindTest: true,
 		},
 		{
-			Name:     "case 2",
+			Name:     "case 2 narsisstic - positive",
 			Number:   111,
 			Expected: false,
 			KindTest: true,
 		},
 		{
-			Name:     "case 3",
+			Name:     "case 3 narsisstic - negative",
 			Number:   121,
 			Expected: true,
 			KindTest: false,
 		},
 		{
-			Name:     "case 4",
+			Name:     "case 4 narsisstic - positive",
 			Number:   1,
 			Expected: true,
 			KindTest: true,
@@ -60,25 +60,25 @@ func TestFindOutlier(t *testing.T) {
 		KindTest bool // negative case -> false, positive case -> true
 	}{
 		{
-			Name:     "case 1",
+			Name:     "case 1 outlier - positive",
 			Arr:      []int{2, 4, 0, 100, 4, 11, 2602, 36},
 			Expected: 11,
 			KindTest: true,
 		},
 		{
-			Name:     "case 2",
+			Name:     "case 2 outlier - positive",
 			Arr:      []int{160, 3, 1719, 19, 11, 13, -21},
 			Expected: 160,
 			KindTest: true,
 		},
 		{
-			Name:     "case 3",
+			Name:     "case 3 outlier - positive",
 			Arr:      []int{11, 13, 15, 19, 9, 13, -21},
 			Expected: 0,
 			KindTest: true,
 		},
 		{
-			Name:     "case 4",
+			Name:     "case 4 outlier - negative",
 			Arr:      []int{11, 13, 15, 19, 9, 13, -21},
 			Expected: 13,
 			KindTest: false,
@@ -109,28 +109,28 @@ func TestNeedleInHaystackNumber(t *testing.T) {
 		KindTest bool // negative case -> false, positive case -> true
 	}{
 		{
-			Name:     "case 1",
+			Name:     "case 1 needle in haystack - positive",
 			Haystack: []string{"red", "blue", "yellow", "black", "grey"},
 			Search:   "blue",
 			Expected: 1,
 			KindTest: true,
 		},
 		{
-			Name:     "case 2",
+			Name:     "case 2 needle in haystack - positive",
 			Haystack: []string{"red", "blue", "yellow", "black", "grey"},
 			Search:   "yellow",
 			Expected: 2,
 			KindTest: true,
 		},
 		{
-			Name:     "case 3",
+			Name:     "case 3 needle in haystack - positive",
 			Haystack: []string{"red", "blue", "yellow", "black", "grey"},
 			Search:   "white",
 			Expected: -1,
 			KindTest: true,
 		},
 		{
-			Name:     "case 4",
+			Name:     "case 4 needle in haystack - negative",
 			Haystack: []string{"red", "blue", "yellow", "black", "grey"},
 			Search:   "red",
 			Expected: -1,
@@ -162,28 +162,28 @@ func TestBlueOceanReverse(t *testing.T) {
 		KindTest bool // negative case -> false, positive case -> true
 	}{
 		{
-			Name:     "case 1",
+			Name:     "case 1 blue ocean - positive",
 			Arr1:     []int{1, 2, 3, 4, 6, 10},
 			Arr2:     []int{1},
 			Expected: []int{2, 3, 4, 6, 10},
 			KindTest: true,
 		},
 		{
-			Name:     "case 2",
+			Name:     "case 2 blue ocean - positive",
 			Arr1:     []int{1, 5, 5, 5, 5, 3},
 			Arr2:     []int{5},
 			Expected: []int{1, 3},
 			KindTest: true,
 		},
 		{
-			Name:     "case 3",
+			Name:     "case 3 blue ocean - positive",
 			Arr1:     []int{1, 5, 5, 5, 5, 3},
 			Arr2:     []int{0},
 			Expected: []int{1, 5, 5, 5, 5, 3},
 			KindTest: true,
 		},
 		{
-			Name:     "case 4",
+			Name:     "case 4 blue ocean - negative",
 			Arr1:     []int{1, 5, 5, 5, 5, 3},
 			Arr2:     []int{2},
 			Expected: []int{1, 5, 5, 5, 3},

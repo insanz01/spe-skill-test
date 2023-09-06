@@ -108,5 +108,19 @@ func main() {
 
 	number := 153
 	narsissticResult := app.NarcissticNumber(number)
-	fmt.Printf("Apakah %d merupakan narsistik ? %v", number, narsissticResult)
+	fmt.Printf("Apakah %d merupakan narsistik ? %v\n", number, narsissticResult)
+
+	arr := []int{2, 4, 100, 4, 11, 2602, 36}
+	parityOutlierResult := app.ParityOutlier(arr)
+	fmt.Printf("Parity Outlier from %+v is %d\n", arr, parityOutlierResult)
+
+	haystack := []string{"red", "blue", "yellow", "black", "grey"}
+	search := "black"
+	haystackIndexResult := app.NeedleInAHaystack(haystack, search)
+	fmt.Printf("Index for %s is %d\n", search, haystackIndexResult)
+
+	arrA := []int{1, 2, 3, 4, 6, 10}
+	arrB := []int{1, 3}
+	blueOceanResult := app.TheBlueOceanReverse(arrA, arrB)
+	fmt.Printf("Blue Ocean %+v\n", blueOceanResult)
 }

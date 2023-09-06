@@ -78,6 +78,12 @@ func TestFindOutlier(t *testing.T) {
 			Expected: 0,
 			KindTest: true,
 		},
+		{
+			Name:     "case 4",
+			Arr:      []int{11, 13, 15, 19, 9, 13, -21},
+			Expected: 13,
+			KindTest: false,
+		},
 	}
 
 	app := NewSpeSkillTest()

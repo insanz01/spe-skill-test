@@ -56,7 +56,6 @@ func TestFindOutlier(t *testing.T) {
 	testScenario := []struct {
 		Name     string
 		Arr      []int
-		Result   int
 		Expected int
 		KindTest bool // negative case -> false, positive case -> true
 	}{
